@@ -2,12 +2,12 @@ package com.company;
 
 public class Main {
 
-    public static void main(String[] args) {
-        long squareSum = 0;
+    public static void main(String[] args) throws InterruptedException {
+        int numberOfThreads = Runtime.getRuntime().availableProcessors();
+        int[] values = new int[]{1, 2, 3, 4, 1, 2, 3, 4, 1};
+
         MySquareSum mySquareSum = new MySquareSum();
-        int[] array = new int[]{3, 4, 5, 6}; // 9+16+25+36=86
-        int numberOfThreads = 4; // Intel® Core™ i5-2500K Processor
-        squareSum = mySquareSum.getSquareSum(array, numberOfThreads);
-        System.out.println("Square's sum of array's values = " + squareSum);
+        long squareSumOfArray = mySquareSum.getSquareSum(values, numberOfThreads);
+        System.out.println("Sum of squares of array elements = " + squareSumOfArray + ";");
     }
 }
