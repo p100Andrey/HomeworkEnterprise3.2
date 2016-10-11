@@ -1,10 +1,13 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.*;
 
-public class MySquareSum implements SquareSum {
+import static java.lang.Math.pow;
+
+public class CountExecutor implements SquareSum {
 
     @Override
     public long getSquareSum(int[] values, int numberOfThreads) {
@@ -24,9 +27,11 @@ public class MySquareSum implements SquareSum {
             futureResults.add(service.submit(() -> {
                 int result = 0;
                 for (int j = start; j < finish; j++) {
-                    result += newTempArray[j] * newTempArray[j];
+                    result += pow(newTempArray[j], 2);
                 }
                 phaser.arrive();
+                System.out.println(result + " calculated by " + Thread.currentThread().getName()
+                        + " from " + Arrays.toString(newTempArray));
                 return result;
             }));
         }

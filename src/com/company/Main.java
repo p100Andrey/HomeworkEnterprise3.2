@@ -6,8 +6,8 @@ public class Main {
         int numberOfThreads = Runtime.getRuntime().availableProcessors();
         int[] values = new int[]{1, 2, 3, 4, 1, 2, 3, 4, 1};
 
-        MySquareSum mySquareSum = new MySquareSum();
-        long squareSumOfArray = mySquareSum.getSquareSum(values, numberOfThreads);
+        CountExecutor countExecutor = new CountExecutor();
+        long squareSumOfArray = countExecutor.getSquareSum(values, numberOfThreads);
         System.out.println("Sum of squares of array elements = " + squareSumOfArray + ";");
     }
 }
